@@ -221,9 +221,74 @@ singly linked list.*/
 
     }
 
-   /**  Given an integer N, write a function which returns the prime factors
+   /**  13.Given an integer N, write a function which returns the prime factors
 of N as singly linked list. */
     LinkedList primeFactors(int N){
-     return null;    
+        LinkedList primeLinkedList = new LinkedList(); 
+        for(int i = 2; i <= N; i++){
+            if(N % i == 0){
+                boolean isPrime = true; 
+                for(int j = 2; j <= Math.sqrt(i); j++){
+                    if(i % j == 0){
+                        isPrime = false; 
+                        break;  
+                    }
+                }
+                if(isPrime){
+                    primeLinkedList.insertFirst(new Node(i));
+                    N /= i;
+                    i--;
+                }
+            }
+        }
+        return primeLinkedList; 
     }
+
+    /** 14.Write a function that will delete all nodes whose contents are divisible
+by N. The function will also return the deleted nodes as a new linked
+list. */
+    LinkedList removeDivisibleByN(int N){
+        LinkedList deletedLinkedList = new LinkedList(); 
+        Node prev = null; 
+        Node curr = head; 
+        if(head == null){
+            System.out.println("Linkedlist is empty");
+            return deletedLinkedList; 
+        } 
+        while(curr != null){
+            if(curr.getData() % N == 0){
+                deletedLinkedList.insertFirst(new Node(curr.getData()));
+                if(prev == null){
+                    deleteFirst();
+                    curr = head; 
+                } else {
+                    prev.setNext(curr.getNext());
+                    curr = curr.getNext();
+                }
+            } else {
+                prev = curr; 
+                curr = curr.getNext();
+            }
+    }
+    return deletedLinkedList; 
+    }
+
+    /** 15. Write a function that will return the reverse of a singly link list.*/
+    LinkedList reverse() {
+        LinkedList reversedLinkedList = new LinkedList(); 
+        Node prev = null; 
+        Node curr = head; 
+        if(head == null){
+            System.out.println("No nodes inside");
+            return reversedLinkedList; 
+        }
+        while(curr != null){
+            reversedLinkedList.insertFirst(new Node(curr.getData()));
+            prev = curr;
+            curr = curr.getNext(); 
+        }
+        return reversedLinkedList; 
+    }
+
+    
 }

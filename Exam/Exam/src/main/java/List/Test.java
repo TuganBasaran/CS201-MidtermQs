@@ -16,7 +16,7 @@ public class Test {
         linkedList.insertFirst(node3);
         linkedList.insertFirst(node2);
         linkedList.insertFirst(node1);
-        linkedList.move(node5, 1);
-        System.out.println(linkedList);
+        System.out.println(linkedList.reverse());      
+        
     }
 }
