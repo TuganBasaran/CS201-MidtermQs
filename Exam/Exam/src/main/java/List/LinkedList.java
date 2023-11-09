@@ -283,12 +283,13 @@ list. */
             return reversedLinkedList; 
         }
         while(curr != null){
-            reversedLinkedList.insertFirst(new Node(curr.getData()));
+            reversedLinkedList.insertFirst(new Node(curr.data));
             prev = curr;
             curr = curr.getNext(); 
         }
         return reversedLinkedList; 
     }
-
+    
+   
     
 }
