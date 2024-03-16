@@ -83,4 +83,35 @@ public class Stack {
             }
         }
         return theSameStack.isEmpty(); 
+    }
+
+    /** For array representation, write a function that enlarges the stack when
+it is full. The new stack will hold two times more than the original stack. */
+    void enlarge (){
+        Element[] newArray = new Element[N*2];
+        for (int i = 0; i < N; i++){
+            newArray[i] = array[i];
+        }
+        array = newArray;
+        N = N*2;
+    }
+
+    /*  Write a method which pops the k’th element from the top and returns
+    it. pop(1) is equal to the original pop, that is, the first element at the
+    top has index 1. You are not allowed to use any stack methods and
+    any external stacks, just attributes, constructors, getters and setters.
+    Write the code for both array and linked list implementations. */
+    Element pop (int k){
+        Element element; 
+        Element[] newElements = new Element[N-1];
+        for(int i = 0; i < k; i++){
+            newElements[i] = array[i]; 
+        } 
+        element = array[k];
+        for(int i = k; i < N-1; i++){
+            newElements[i] = array[i+1];
+        } 
+        array = newElements; 
+        return element;
+    }
 }

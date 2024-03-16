@@ -44,5 +44,4 @@ public class TreeNode {
             right.prettyPrint(level + 1);
         }
     }
-
 }
